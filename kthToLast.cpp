@@ -1,4 +1,6 @@
 /**
+ * Author: Skylar Payne
+ * Date: October 28, 2014
  * Implement an algorithm to find the kth to last element of a singly linked list.
  **/
 
