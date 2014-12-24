@@ -40,6 +40,7 @@ bool is_valid_BST(Node* root, int l = INT_MIN, int r = INT_MAX) {
 }
 
 int main(int argc, char** argv) {
+	srand(time(NULL));
 	Node* root = new Node(rand() % 200);
 	for(int i = 1; i < 100; ++i) {
 		insert_to_BST(root, rand() % 200);

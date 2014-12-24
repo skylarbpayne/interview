@@ -28,6 +28,8 @@ int main(int argc, char** argv) {
 	std::vector<char> a(20);
 	std::vector<char> b(20);
 	std::vector<char> res;
+	
+	srand(time(NULL));
 
 	for(int i = 0; i < 20; ++i) {
 		a[i] = rand() % 10;
