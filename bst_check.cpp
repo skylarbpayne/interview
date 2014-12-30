@@ -18,10 +18,16 @@ public:
 	Node( int v, Node* l = nullptr, Node* r = nullptr) : value(v), left(l), right(r) { }
 };
 
-void insert_to_BST(Node* root, int v) {
-	if(root == nullptr)
-		return;
-	v <= root->value ? insert_to_BST(root->left, v) : insert_to_BST(root->right, v);
+Node* insert(Node* root, int v) {
+	if(root == nullptr) {
+		return new Node(v);
+	}
+	if(v <= root->value) {
+		root->left = insert(root->left, v);
+	} else {
+		root->right = insert(root->right, v);
+	}
+	return root;
 }
 
 void destroy_tree(Node* root) {
@@ -35,15 +41,15 @@ void destroy_tree(Node* root) {
 bool is_valid_BST(Node* root, int l = INT_MIN, int r = INT_MAX) {
 	if(root == nullptr)
 		return true;
-	bool v = (l <= root->value) && (root->value < r);
+	bool v = (l <= root->value) && (root->value <= r);
 	return v && is_valid_BST(root->left, l, root->value) && is_valid_BST(root->right, root->value, r);
 }
 
 int main(int argc, char** argv) {
 	srand(time(NULL));
-	Node* root = new Node(rand() % 200);
+	Node* root = insert(nullptr, rand() % 200);
 	for(int i = 1; i < 100; ++i) {
-		insert_to_BST(root, rand() % 200);
+		root = insert(root, rand() % 200);
 	}
 	
 	assert(is_valid_BST(root) == true);
