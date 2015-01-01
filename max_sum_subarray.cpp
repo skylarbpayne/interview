@@ -26,8 +26,8 @@ int main(int argc, char** argv) {
 		return -1;
 	}
 	std::vector<int> a(argc - 1);
-	for(int i = 1; i < argc; ++i) {
-		a[i] = atoi(argv[i]);
+	for(int i = 1; i < a.size(); ++i) {
+		a[i-1] = atoi(argv[i]);
 	}
 
 	std::cout << max_subarray_sum(a) << std::endl;
